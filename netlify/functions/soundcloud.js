@@ -4,7 +4,7 @@ exports.handler = async function(event) {
   const CLIENT_SECRET = 'RyReqpCCfhHYJbKa1JmkgwVx6GV1j3mC';
   const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
 
-  // Your 3 playlists with their IDs
+  // Your 3 playlists
   const PLAYLISTS = [
     { id: '1816185342', name: 'Jummah + Eid (2)' },
     { id: '88455109',   name: 'Jummah + Eid' },
@@ -49,31 +49,37 @@ exports.handler = async function(event) {
       'Authorization': `OAuth ${access_token}`
     };
 
-    // ── STEP 2: Fetch tracks from all 3 playlists ────────────────────
-    // We fetch each playlist's tracks and combine them
-    // Limit per playlist: 50 tracks to stay within API limits
+    // ── STEP 2: Fetch ALL tracks from all 3 playlists (paginated) ───
     const allTracksRaw = [];
 
     for (const playlist of PLAYLISTS) {
       try {
-        const resp = await fetch(
-          `https://api.soundcloud.com/playlists/${playlist.id}/tracks?limit=50&linked_partitioning=true`,
-          { headers: scHeaders }
-        );
-        if (!resp.ok) continue;
-        const data = await resp.json();
-        const items = data.collection || data;
-        if (Array.isArray(items)) {
+        // Paginate through all pages — max 200 per page, up to 10 pages
+        let nextUrl = `https://api.soundcloud.com/playlists/${playlist.id}/tracks?limit=200&linked_partitioning=true`;
+        let page = 0;
+
+        while (nextUrl && page < 10) {
+          const resp = await fetch(nextUrl, { headers: scHeaders });
+          if (!resp.ok) break;
+
+          const data = await resp.json();
+          const items = data.collection || data;
+
+          if (!Array.isArray(items) || items.length === 0) break;
+
           items.forEach(t => {
             allTracksRaw.push({ ...t, _playlist: playlist.name });
           });
+
+          nextUrl = data.next_href || null;
+          page++;
         }
       } catch (e) {
         console.error(`Failed to fetch playlist ${playlist.name}:`, e.message);
       }
     }
 
-    // Deduplicate by track ID (a track can appear in multiple playlists)
+    // Deduplicate by track ID
     const seen = new Set();
     const allTracks = allTracksRaw.filter(t => {
       if (seen.has(t.id)) return false;
@@ -93,7 +99,6 @@ exports.handler = async function(event) {
       return { ...t, _score: score };
     });
 
-    // Sort by score — tracks with keyword matches bubble to top
     const top15 = scored
       .sort((a, b) => b._score - a._score)
       .slice(0, 15);
@@ -112,12 +117,12 @@ A student is searching for: "${query}"
 Here are ${top15.length} lectures from the library:
 ${list}
 
-Return ONLY a valid JSON array — no markdown, no extra text. Include only genuinely relevant lectures ranked best first. If none are relevant return an empty array [].
+Return ONLY a valid JSON array — no markdown, no extra text. Include only genuinely relevant lectures ranked best first. If none are relevant return [].
 
-For each relevant result include:
-- index (1-based as listed above)
-- relevance (0-100 score)  
-- reason (1-2 sentences explaining specifically why this lecture helps with the student's question)
+For each include:
+- index (1-based)
+- relevance (0-100)
+- reason (1-2 sentences why this lecture helps)
 
 Example: [{"index":1,"relevance":91,"reason":"This lecture directly addresses..."}]`;
 
@@ -140,14 +145,13 @@ Example: [{"index":1,"relevance":91,"reason":"This lecture directly addresses...
       throw new Error(`AI ranking failed: ${err.error?.message || aiResp.status}`);
     }
 
-    const aiData  = await aiResp.json();
-    const aiText  = (aiData.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
+    const aiData = await aiResp.json();
+    const aiText = (aiData.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
 
     let ranked;
     try {
       ranked = JSON.parse(aiText.replace(/```json|```/g,'').trim());
     } catch {
-      // Fallback: return top keyword matches without AI ranking
       ranked = top15.slice(0,5).map((_,i) => ({ index:i+1, relevance:70, reason:'Keyword match found.' }));
     }
 
