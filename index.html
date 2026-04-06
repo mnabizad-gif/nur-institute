@@ -18,194 +18,61 @@
     --bg:         #f9f9f7;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'EB Garamond', Georgia, serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* HEADER */
-  .site-header {
-    background: var(--teal);
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 90px;
-    border-bottom: 3px solid var(--teal-dark);
-  }
+  body { font-family:'EB Garamond',Georgia,serif; background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; }
+  .site-header { background:var(--teal); padding:0 40px; display:flex; align-items:center; justify-content:space-between; min-height:90px; border-bottom:3px solid var(--teal-dark); }
   .header-brand { display:flex; align-items:center; gap:16px; text-decoration:none; }
   .header-logo  { height:64px; width:auto; }
-  .header-title {
-    color: rgba(255,255,255,0.85);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px; font-weight:400;
-    letter-spacing: 0.18em; text-transform:uppercase; line-height:1.4;
-    border-left: 1px solid rgba(255,255,255,0.3);
-    padding-left: 16px;
-  }
+  .header-title { color:rgba(255,255,255,0.85); font-family:'Cormorant Garamond',serif; font-size:11px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; line-height:1.4; border-left:1px solid rgba(255,255,255,0.3); padding-left:16px; }
   .header-nav { display:flex; align-items:center; gap:28px; }
-  .header-nav a {
-    color: rgba(255,255,255,0.9); text-decoration:none;
-    font-family:'Cormorant Garamond',serif;
-    font-size:12px; font-weight:600;
-    letter-spacing:0.12em; text-transform:uppercase;
-    transition: color 0.2s;
-  }
+  .header-nav a { color:rgba(255,255,255,0.9); text-decoration:none; font-family:'Cormorant Garamond',serif; font-size:12px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; transition:color 0.2s; }
   .header-nav a:hover { color:#fff; }
-
-  /* MAIN */
-  .main {
-    flex:1; display:flex; flex-direction:column;
-    align-items:center; padding:70px 24px 60px;
-  }
-  .hero { text-align:center; margin-bottom:48px; animation: fadeUp 0.7s ease both; }
+  .main { flex:1; display:flex; flex-direction:column; align-items:center; padding:70px 24px 60px; }
+  .hero { text-align:center; margin-bottom:48px; animation:fadeUp 0.7s ease both; }
   .hero-divider { width:60px; height:1px; background:var(--teal); margin:20px auto; opacity:0.4; }
-  .hero-tagline {
-    font-family:'EB Garamond',serif; font-style:italic;
-    font-size:18px; color:var(--text-muted); letter-spacing:0.02em;
-  }
-
-  /* SEARCH */
-  .search-section { width:100%; max-width:620px; animation: fadeUp 0.7s ease 0.1s both; }
-  .search-label {
-    display:block; text-align:center;
-    font-family:'Cormorant Garamond',serif;
-    font-size:22px; font-weight:300;
-    color:var(--teal-dark); letter-spacing:0.03em; margin-bottom:18px;
-  }
-  .search-bar {
-    display:flex; border:1.5px solid var(--border);
-    border-radius:3px; overflow:hidden;
-    background:var(--white); transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .search-bar:focus-within {
-    border-color:var(--teal);
-    box-shadow: 0 0 0 3px rgba(61,107,120,0.1);
-  }
-  .search-icon {
-    display:flex; align-items:center;
-    padding:0 16px; color:var(--teal); opacity:0.6; flex-shrink:0;
-  }
-  .search-input {
-    flex:1; border:none; outline:none;
-    font-family:'EB Garamond',serif; font-size:17px;
-    color:var(--text); padding:15px 0; background:transparent;
-  }
+  .hero-tagline { font-family:'EB Garamond',serif; font-style:italic; font-size:18px; color:var(--text-muted); }
+  .search-section { width:100%; max-width:620px; animation:fadeUp 0.7s ease 0.1s both; }
+  .search-label { display:block; text-align:center; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; color:var(--teal-dark); letter-spacing:0.03em; margin-bottom:18px; }
+  .search-bar { display:flex; border:1.5px solid var(--border); border-radius:3px; overflow:hidden; background:var(--white); transition:border-color 0.2s,box-shadow 0.2s; }
+  .search-bar:focus-within { border-color:var(--teal); box-shadow:0 0 0 3px rgba(61,107,120,0.1); }
+  .search-icon { display:flex; align-items:center; padding:0 16px; color:var(--teal); opacity:0.6; flex-shrink:0; }
+  .search-input { flex:1; border:none; outline:none; font-family:'EB Garamond',serif; font-size:17px; color:var(--text); padding:15px 0; background:transparent; }
   .search-input::placeholder { color:#aab5b8; font-style:italic; }
-  .search-btn {
-    background:var(--teal); border:none; color:#fff;
-    font-family:'Cormorant Garamond',serif;
-    font-size:11px; font-weight:600;
-    letter-spacing:0.18em; text-transform:uppercase;
-    padding:0 28px; cursor:pointer;
-    transition: background 0.2s; white-space:nowrap; flex-shrink:0;
-  }
+  .search-btn { background:var(--teal); border:none; color:#fff; font-family:'Cormorant Garamond',serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; padding:0 28px; cursor:pointer; transition:background 0.2s; white-space:nowrap; flex-shrink:0; }
   .search-btn:hover    { background:var(--teal-dark); }
   .search-btn:disabled { background:#a0b4ba; cursor:not-allowed; }
-
-  /* RESULTS */
   .results-section { width:100%; max-width:620px; margin-top:44px; }
-  .results-heading {
-    font-family:'Cormorant Garamond',serif;
-    font-size:11px; font-weight:600;
-    letter-spacing:0.2em; text-transform:uppercase;
-    color:var(--teal); margin-bottom:20px;
-    display:flex; align-items:center; gap:14px;
-  }
+  .results-heading { font-family:'Cormorant Garamond',serif; font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-bottom:20px; display:flex; align-items:center; gap:14px; }
   .results-heading::after { content:''; flex:1; height:1px; background:var(--border); }
-
-  .track-card {
-    display:block; background:var(--white);
-    border:1px solid var(--border);
-    border-left:3px solid var(--teal);
-    padding:20px 24px; margin-bottom:14px;
-    text-decoration:none; color:inherit;
-    transition: box-shadow 0.2s;
-    animation: fadeUp 0.4s ease both;
-  }
-  .track-card:hover { box-shadow: 0 2px 12px rgba(61,107,120,0.12); }
-  .track-title {
-    font-family:'EB Garamond',serif; font-size:20px; font-weight:500;
-    color:var(--teal-dark); margin-bottom:6px; line-height:1.3;
-  }
-  .track-meta {
-    font-family:'Cormorant Garamond',serif;
-    font-size:12px; letter-spacing:0.08em; color:var(--text-light);
-    text-transform:uppercase; margin-bottom:10px;
-    display:flex; gap:16px; flex-wrap:wrap;
-  }
-  .track-description {
-    font-size:15px; color:var(--text-muted); line-height:1.65;
-    display:-webkit-box; -webkit-line-clamp:2;
-    -webkit-box-orient:vertical; overflow:hidden; font-style:italic;
-  }
-  .track-reason {
-    margin-top:12px; padding:10px 14px;
-    background:var(--teal-faint);
-    border-left:2px solid var(--teal);
-    font-size:14px; color:var(--teal-dark); line-height:1.6;
-  }
-  .track-reason strong {
-    font-family:'Cormorant Garamond',serif;
-    font-size:10px; letter-spacing:0.15em; text-transform:uppercase;
-    display:block; margin-bottom:4px; color:var(--teal);
-  }
+  .track-card { display:block; background:var(--white); border:1px solid var(--border); border-left:3px solid var(--teal); padding:20px 24px; margin-bottom:14px; text-decoration:none; color:inherit; transition:box-shadow 0.2s; animation:fadeUp 0.4s ease both; }
+  .track-card:hover { box-shadow:0 2px 12px rgba(61,107,120,0.12); }
+  .track-title { font-family:'EB Garamond',serif; font-size:20px; font-weight:500; color:var(--teal-dark); margin-bottom:6px; line-height:1.3; }
+  .track-meta { font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.08em; color:var(--text-light); text-transform:uppercase; margin-bottom:10px; display:flex; gap:16px; flex-wrap:wrap; }
+  .track-description { font-size:15px; color:var(--text-muted); line-height:1.65; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font-style:italic; }
+  .track-reason { margin-top:12px; padding:10px 14px; background:var(--teal-faint); border-left:2px solid var(--teal); font-size:14px; color:var(--teal-dark); line-height:1.6; }
+  .track-reason strong { font-family:'Cormorant Garamond',serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; display:block; margin-bottom:4px; color:var(--teal); }
   .relevance-row { display:flex; align-items:center; gap:10px; margin-top:12px; }
-  .relevance-label {
-    font-family:'Cormorant Garamond',serif;
-    font-size:10px; letter-spacing:0.15em; text-transform:uppercase;
-    color:var(--text-light); min-width:62px;
-  }
+  .relevance-label { font-family:'Cormorant Garamond',serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-light); min-width:62px; }
   .relevance-track { flex:1; height:2px; background:var(--border); border-radius:2px; overflow:hidden; }
-  .relevance-fill  { height:100%; background:var(--teal); transition: width 0.8s ease; }
+  .relevance-fill  { height:100%; background:var(--teal); transition:width 0.8s ease; }
   .relevance-pct   { font-size:11px; color:var(--teal); min-width:32px; text-align:right; }
-
-  /* STATUS */
   .status { text-align:center; padding:48px 20px; color:var(--text-muted); font-size:16px; font-style:italic; }
-  .spinner {
-    display:inline-block; width:18px; height:18px;
-    border:2px solid var(--border); border-top-color:var(--teal);
-    border-radius:50%; animation: spin 0.8s linear infinite;
-    vertical-align:middle; margin-right:10px;
-  }
-  .error-box {
-    background:#fff5f5; border:1px solid #e8c4c4;
-    border-left:3px solid #c0392b;
-    padding:16px 20px; font-size:15px; color:#8b2020; line-height:1.6;
-  }
+  .spinner { display:inline-block; width:18px; height:18px; border:2px solid var(--border); border-top-color:var(--teal); border-radius:50%; animation:spin 0.8s linear infinite; vertical-align:middle; margin-right:10px; }
+  .error-box { background:#fff5f5; border:1px solid #e8c4c4; border-left:3px solid #c0392b; padding:16px 20px; font-size:15px; color:#8b2020; line-height:1.6; }
   .empty-state { text-align:center; padding:56px 20px; }
   .empty-state .glyph { font-size:42px; color:var(--border); margin-bottom:14px; }
   .empty-state p { font-size:16px; color:var(--text-muted); font-style:italic; }
-
-  /* FOOTER */
-  .site-footer {
-    background:var(--teal-dark); color:rgba(255,255,255,0.6);
-    text-align:center; padding:20px;
-    font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.1em;
-  }
+  .site-footer { background:var(--teal-dark); color:rgba(255,255,255,0.6); text-align:center; padding:20px; font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.1em; }
   .site-footer a { color:rgba(255,255,255,0.8); text-decoration:none; }
-
   @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
   @keyframes spin   { to{transform:rotate(360deg)} }
-  @media(max-width:600px) {
-    .site-header { padding:0 20px; }
-    .header-nav  { display:none; }
-    .main        { padding:44px 16px 40px; }
-  }
+  @media(max-width:600px) { .site-header{padding:0 20px;} .header-nav{display:none;} .main{padding:44px 16px 40px;} }
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <a class="header-brand" href="https://alsalik.org" target="_blank">
-    <img class="header-logo"
-         src="https://alsalik.org/wp-content/uploads/2017/08/Khanqah-Logo-New-1024x371.png"
-         alt="Khanqah Imdadiyyah Ashrafiyyah"
-         onerror="this.style.display='none'" />
+    <img class="header-logo" src="https://alsalik.org/wp-content/uploads/2017/08/Khanqah-Logo-New-1024x371.png" alt="Khanqah Imdadiyyah Ashrafiyyah" onerror="this.style.display='none'" />
     <span class="header-title">Khanqah Imdadiyyah<br>Ashrafiyyah</span>
   </a>
   <nav class="header-nav">
@@ -220,7 +87,6 @@
     <div class="hero-divider"></div>
     <p class="hero-tagline">Search the lecture library of Khanqah Imdadiyyah Ashrafiyyah</p>
   </div>
-
   <div class="search-section">
     <label class="search-label">What do you need help with?</label>
     <div class="search-bar">
@@ -231,12 +97,10 @@
         </svg>
       </span>
       <input class="search-input" id="search-input" type="text"
-             placeholder="e.g. anger, greed, jealousy, purification of the heart…"
-             autocomplete="off" />
+        placeholder="e.g. anger, greed, jealousy, purification of the heart…" autocomplete="off" />
       <button class="search-btn" id="search-btn" onclick="doSearch()">Search Lectures</button>
     </div>
   </div>
-
   <div class="results-section" id="results-section" style="display:none"></div>
 </main>
 
@@ -246,20 +110,9 @@
 </footer>
 
 <script>
-// ── PASTE YOUR ANTHROPIC API KEY HERE ──────────────────────────────
-const ANTHROPIC_API_KEY = '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';
-// ───────────────────────────────────────────────────────────────────
-
-const ANTHROPIC_API = 'https://api.anthropic.com/v1/messages';
-
 async function doSearch() {
   const query = document.getElementById('search-input').value.trim();
   if (!query) return;
-
-  if (ANTHROPIC_API_KEY === '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') {
-    showError('Please open index.html and paste your Anthropic API key where it says YOUR_ANTHROPIC_API_KEY_HERE.');
-    return;
-  }
 
   const btn = document.getElementById('search-btn');
   btn.disabled = true;
@@ -267,11 +120,16 @@ async function doSearch() {
   showLoading('Searching the lecture library…');
 
   try {
-    const tracks = await fetchTracks(query);
-    if (!tracks || tracks.length === 0) { showEmpty(query); return; }
-    showLoading(`Found ${tracks.length} lectures — ranking with AI…`);
-    const ranked = await rankWithClaude(query, tracks);
-    renderResults(query, ranked);
+    const resp = await fetch('/.netlify/functions/soundcloud', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query })
+    });
+
+    const data = await resp.json();
+    if (!resp.ok || data.error) throw new Error(data.error || `Server error ${resp.status}`);
+    if (!data.results || data.results.length === 0) { showEmpty(query); return; }
+    renderResults(data.results);
   } catch(err) {
     showError(err.message || 'Something went wrong. Please try again.');
     console.error(err);
@@ -281,101 +139,21 @@ async function doSearch() {
   }
 }
 
-async function fetchTracks(query) {
-  // Call our own Netlify proxy function — avoids CORS issues with SoundCloud
-  const resp = await fetch('/.netlify/functions/soundcloud');
-  if (!resp.ok) throw new Error(`Could not reach lecture library (${resp.status}). Please try again.`);
-  const data = await resp.json();
-  if (data.error) throw new Error(data.error);
-
-  const all = data.tracks || [];
-  if (all.length === 0) throw new Error('No public lectures found. Make sure your SoundCloud tracks are public.');
-
-  // Keyword pre-filter
-  const keywords = query.toLowerCase().split(/\s+/);
-  const scored = all.map(t => {
-    const haystack = `${t.title} ${t.description}`.toLowerCase();
-    return { ...t, _score: keywords.filter(k => haystack.includes(k)).length };
-  });
-
-  return scored.sort((a, b) => b._score - a._score).slice(0, 15);
-}
-
-async function rankWithClaude(query, tracks) {
-  const list = tracks.map((t, i) =>
-    `${i+1}. Title: "${t.title}"\n   Description: "${t.description.slice(0,200)}"\n   Duration: ${Math.round(t.duration/60000)} min`
-  ).join('\n\n');
-
-  const prompt = `You are a knowledgeable assistant helping students of Sufism and Islamic spirituality find relevant lectures.
-
-A student is searching for: "${query}"
-
-Here are ${tracks.length} available lectures from Khanqah Imdadiyyah Ashrafiyyah:
-${list}
-
-Return ONLY a valid JSON array — no markdown, no explanation. Include only genuinely relevant lectures, ranked best first. For each include:
-- index (1-based as listed)
-- relevance (0-100)
-- reason (1-2 sentences explaining why this lecture addresses the student's question)
-
-Example: [{"index":1,"relevance":91,"reason":"This lecture directly covers..."}]`;
-
-  const resp = await fetch(ANTHROPIC_API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-calls': 'true'
-    },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
-      messages: [{ role: 'user', content: prompt }]
-    })
-  });
-
-  if (!resp.ok) {
-    const err = await resp.json().catch(()=>({}));
-    throw new Error(`AI error: ${err.error?.message || resp.status}`);
-  }
-
-  const data = await resp.json();
-  const text = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
-
-  let ranked;
-  try {
-    ranked = JSON.parse(text.replace(/```json|```/g,'').trim());
-  } catch {
-    return tracks.slice(0,5).map(t=>({ track:t, relevance:70, reason:'Keyword match found.' }));
-  }
-
-  return ranked
-    .filter(r => r.relevance > 25)
-    .map(r => ({ track: tracks[r.index-1], relevance: r.relevance, reason: r.reason }))
-    .filter(r => r.track);
-}
-
-function renderResults(query, results) {
+function renderResults(results) {
   const sec = document.getElementById('results-section');
   sec.style.display = 'block';
-  if (!results || results.length === 0) { showEmpty(query); return; }
-
   let html = `<div class="results-heading">${results.length} lecture${results.length!==1?'s':''} found</div>`;
-  results.forEach(({track:t, relevance, reason}, i) => {
-    const mins = Math.round((t.duration||0)/60000);
+  results.forEach(({title,description,duration,permalink_url,playback_count,relevance,reason}, i) => {
+    const mins = Math.round((duration||0)/60000);
     html += `
-      <a class="track-card" href="${esc(t.permalink_url)}" target="_blank" style="animation-delay:${i*0.06}s">
-        <div class="track-title">${esc(t.title)}</div>
+      <a class="track-card" href="${esc(permalink_url)}" target="_blank" style="animation-delay:${i*0.06}s">
+        <div class="track-title">${esc(title)}</div>
         <div class="track-meta">
           ${mins?`<span>${mins} min</span>`:''}
-          ${t.genre?`<span>${esc(t.genre)}</span>`:''}
-          ${t.playback_count?`<span>${t.playback_count.toLocaleString()} plays</span>`:''}
+          ${playback_count?`<span>${playback_count.toLocaleString()} plays</span>`:''}
         </div>
-        ${t.description?`<div class="track-description">${esc(t.description)}</div>`:''}
-        <div class="track-reason">
-          <strong>Why this lecture</strong>${esc(reason)}
-        </div>
+        ${description?`<div class="track-description">${esc(description)}</div>`:''}
+        <div class="track-reason"><strong>Why this lecture</strong>${esc(reason)}</div>
         <div class="relevance-row">
           <span class="relevance-label">Relevance</span>
           <div class="relevance-track"><div class="relevance-fill" style="width:${relevance}%"></div></div>
@@ -404,7 +182,6 @@ function showEmpty(query) {
 function esc(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-
 document.getElementById('search-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') doSearch();
 });
